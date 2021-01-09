@@ -1,0 +1,36 @@
+{
+  "name": "backend-grpc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "dev": "cross-env NODE_ENV=development nodemon",
+    "lint": "eslint . --ext .js -f ./.eslintformatter.js; exit 0",
+    "lint:fix": "eslint . --ext .js -f ./.eslintformatter.js --fix; exit 0",
+    "lint:staged": "lint-staged",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "trongnv",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.2.3",
+    "@grpc/proto-loader": "^0.5.5",
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit-msg": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "npm run lint:fix",
+      "git add"
+    ]
+  }
+}
